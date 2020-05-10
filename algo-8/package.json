@@ -1,0 +1,26 @@
+{
+  "name": "algo-8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "SET NODE_ENV=production && node server",
+    "dev": "nodemon server"
+  },
+  "author": "karthik-10",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.5",
+    "axios": "^0.19.2",
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.7",
+    "mongoose": "^5.9.13",
+    "newsapi": "^2.4.0",
+    "twit": "^2.2.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
