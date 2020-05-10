@@ -17,7 +17,7 @@ exports.getGoogleNews = async (req, res, next) => {
     const News = new NewsSchema(result);
     News.save();
   } catch (error) {
-    console.log(error);
+    console.log(error.red);
   } finally {
     publishToQueue('news', result.data.toString());
     res.status(200).json(result.data);
