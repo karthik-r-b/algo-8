@@ -1,11 +1,10 @@
 const publishToQueue = require('../services/MQSender');
 const newsService = require('../services/newsService');
-const NewsSchema = require('../models/NewsModel');
 const axios = require('axios');
 /*
 @desc Get all the news
-@route GET/api/news
-@access twitterauthorized
+@route GET/api/news?='news'
+@access googleauthorized
 */
 
 exports.getGoogleNews = async (req, res, next) => {
@@ -14,8 +13,6 @@ exports.getGoogleNews = async (req, res, next) => {
   let result = '';
   try {
     result = await axios.get(resultNews);
-    const News = new NewsSchema(result);
-    News.save();
   } catch (error) {
     console.log(error.red);
   } finally {

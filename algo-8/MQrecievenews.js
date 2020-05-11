@@ -1,5 +1,5 @@
 const amqp = require('amqplib/callback_api');
-
+const NewsSchema = require('../models/NewsModel');
 // Step 1: Create Connection
 amqp.connect('amqp://localhost', (connError, connection) => {
   if (connError) {
@@ -17,7 +17,11 @@ amqp.connect('amqp://localhost', (connError, connection) => {
     channel.consume(
       QUEUE,
       (msg) => {
-        console.log(`Message received: ${JSON.stringify(msg)}`);
+        let result = {};
+        result.data = msg;
+        const News = new NewsSchema(result.data);
+        News.save();
+        console.log(`Message received:`);
       },
       {
         noAck: true,
